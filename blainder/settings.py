@@ -27,7 +27,7 @@ SECRET_KEY = 'x%a21i^)a0ax)g9z^rsz*i7%melwsr$(no7)ocb3_g3lak-4mg'
 if os.getenv("DJANGO_DEVELOPMENT", False): 
     #The DJANGO_DEVELOPMENT env variable is in my .zshrc on my local machine.
     DEBUG = True
-    ALLOWED_HOSTS = ["localhost"]
+    ALLOWED_HOSTS = ["localhost", "127.0.0.1"]
 else:
     DEBUG = False
     ALLOWED_HOSTS = ["18.134.95.205", "blainder.gq"]
@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'frontpage'
 ]
 
 MIDDLEWARE = [
