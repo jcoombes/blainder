@@ -29,6 +29,11 @@
    }(document, 'script', 'facebook-jssdk'));
 </script>
 
+<script>
+FB.getLoginStatus(function(response) {
+    statusChangeCallback(response);
+});
+</script>
 
     <h1> Blainder </h1>
     <p>A Blaine Talking Experience</p>
