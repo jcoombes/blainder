@@ -30,7 +30,7 @@ if os.getenv("DJANGO_DEVELOPMENT", False):
     ALLOWED_HOSTS = ["localhost", "127.0.0.1"]
 else:
     DEBUG = False
-    ALLOWED_HOSTS = ["18.134.95.205", "blainder.gq"]
+    ALLOWED_HOSTS = ["18.134.95.205", "blainder.gq", "blainder.ml"]
 
 # Application definition
 
