@@ -2,7 +2,10 @@
 <html>
     <head>
         <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width; initial-scale=1.0">
         <title>Blainder | A Blaine Talking Experience</title>
+        {% load static %}
+        link href="{% static "frontpage/css/style.css" %}" rel="stylesheet" type="text/css" />
     </head>
 
 <body> 
@@ -35,8 +38,18 @@
 
     <h1> Blainder </h1>
     <p>A Blaine Talking Experience</p>
-    {% load static %}
-    <img src="{% static "frontpage/img/103748070_3202483313107175_7903101331229398658_o.jpg" %}"
+    <div id="container">
+        <div class="polaroid-frame">
+           <img src="{% static "frontpage/img/103748070_3202483313107175_7903101331229398658_o.jpg" %}"
     alt="Unicycle Blaine">
-    </body>
+        </div>
+    </div>
+
+    <div id="buttons">
+        <button type="button" id="dislike">💔</button>
+        <button type="button" id="like">💚</button>
+    </div>
+
+    <script src="{% static "frontpage/js/script.js" %}"></script>
+</body>
 </html>
