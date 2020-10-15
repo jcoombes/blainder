@@ -6,7 +6,7 @@ import PIL
 
 # Create your models here.
 class User(models.Model):
-    class GenderIdentity(models.TextChoices):
+    class GenderIdentity(models.IntegerChoices):
         AGENDER = 1, gtl('Agender')
         ANDROGYNE = 2, gtl('Androgyne')
         ANDROYNOUS = 3, gtl('Androgynous')
