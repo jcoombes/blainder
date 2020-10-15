@@ -66,8 +66,7 @@ class User(models.Model):
     name = models.CharField(max_length=200)
     date_of_birth = models.DateField()
     description = models.CharField(max_length=500)
-    gender_identity = models.IntegerField(
-        max_length=2, choices=GenderIdentity.choices)
+    gender_identity = models.IntegerField(choices=GenderIdentity.choices)
     show_me = models.CharField(max_length=1, choices=ShowMe.choices)
     same_orientation_first = models.BooleanField()
     last_sign_in = models.DateTimeField(default=timezone.now)
