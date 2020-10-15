@@ -86,7 +86,7 @@ class Photo(models.Model):
         Helper function to upload files containing blaine to a different folder than
         files containing not-blaine.
         """
-        if str(user) == "blaine":
+        if str(user).endswith("Blaine"):
             return 'blaine/'
         else:
             return ''
