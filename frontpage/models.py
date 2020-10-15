@@ -6,7 +6,7 @@ import PIL
 
 # Create your models here.
 class User(models.Model):
-    class GenderIdentity(models.IntegerChoices):
+    class GenderIdentity(models.TextChoices):
         AGENDER = 1, gtl('Agender')
         ANDROGYNE = 2, gtl('Androgyne')
         ANDROYNOUS = 3, gtl('Androgynous')
@@ -66,13 +66,13 @@ class User(models.Model):
     name = models.CharField(max_length=200)
     date_of_birth = models.DateField()
     description = models.CharField(max_length=500)
-    gender_identity = models.CharField(
-        max_length=50, choices=GenderIdentity.choices)
+    gender_identity = models.IntegerField(
+        max_length=2, choices=GenderIdentity.choices)
     show_me = models.CharField(max_length=1, choices=ShowMe.choices)
     same_orientation_first = models.BooleanField()
     last_sign_in = models.DateTimeField(default=timezone.now)
-    likes = models.ManyToManyField('self', symmetrical=False, related_name='like_target')
-    dislikes = models.ManyToManyField('self', symmetrical=False, related_name='dislike_target')
+    likes = models.ManyToManyField('self', symmetrical=False, related_name='like_target', blank=True)
+    dislikes = models.ManyToManyField('self', symmetrical=False, related_name='dislike_target', blank=True)
 
     def __str__(self):
         return self.name
