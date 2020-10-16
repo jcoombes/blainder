@@ -40,6 +40,9 @@ function getnextimagesrc () {
   //This will make an ajax call to the server to get the next picture
   //of blaine from the database.
   //
+  fetch('https://jsonplaceholder.typicode.com/photos/1')
+  .then(response => response.json())
+  .then(json => console.log(json))
   return "https://cdn.bulbagarden.net/upload/thumb/c/c8/Lets_Go_Pikachu_Eevee_Blaine.png/216px-Lets_Go_Pikachu_Eevee_Blaine.png";
 }
 
