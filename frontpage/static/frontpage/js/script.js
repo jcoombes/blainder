@@ -13,7 +13,6 @@ function shuffleArray (arr) {
     }
 };
 
-shuffleArray(arr);
 
 frame.addEventListener("transitionend", frame.remove);
 dislikebutton.addEventListener("click", () => {pile_with_promises('left', times_clicked++);});
@@ -51,3 +50,5 @@ function pile (choice, obj) {
 
   newframe.addEventListener("transitionend", frame.remove);
   };
+
+shuffleArray(arr);
