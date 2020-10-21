@@ -11,7 +11,8 @@ likebutton.addEventListener("click", () => {pile_with_promises('right', times_cl
 
 
 function pile_with_promises (choice, times_clicked) {
-  fetch('https://blainder.ml/15')
+  fetch(`https://blainder.ml/${times_clicked}`)
+  //fetch('http://localhost:8000/1')
   .then(response => response.json())
   .then(obj => pile(choice, obj))
 }
@@ -36,7 +37,7 @@ function pile (choice, obj) {
 
   let imgnode = document.createElement("img");
   newframe.appendChild(imgnode);
-  console.log(`obj has some properties ${obj.url} ${obj.alt}`)
+  console.log(`obj has some properties ${obj.url} ${obj.alt}`);
   imgnode.src = obj.url;
   imgnode.alt = obj.alt;
 
