@@ -4,6 +4,16 @@ let frame = document.querySelector(".polaroid-frame");
 let dislikebutton = document.getElementById("dislike");
 let likebutton = document.getElementById("like");
 let times_clicked = 0
+let arr = Array.from(Array(17).keys())
+
+function shuffleArray (arr) {
+    for (let i = arr.length - 1; 1 > 0; i--) {
+    const j = Math.floor(Math.random() * (i+1));
+    [arr[i], arr[j]] = [arr[j], arr[i]];
+    }
+};
+
+shuffleArray(arr);
 
 frame.addEventListener("transitionend", frame.remove);
 dislikebutton.addEventListener("click", () => {pile_with_promises('left', times_clicked++);});
@@ -11,8 +21,7 @@ likebutton.addEventListener("click", () => {pile_with_promises('right', times_cl
 
 
 function pile_with_promises (choice, times_clicked) {
-  fetch(`https://blainder.ml/${times_clicked}`)
-  //fetch('http://localhost:8000/1')
+  fetch(`https://blainder.ml/${arr[times_clicked]}`)
   .then(response => response.json())
   .then(obj => pile(choice, obj))
 }
@@ -37,7 +46,6 @@ function pile (choice, obj) {
 
   let imgnode = document.createElement("img");
   newframe.appendChild(imgnode);
-  console.log(`obj has some properties ${obj.url} ${obj.alt}`);
   imgnode.src = obj.url;
   imgnode.alt = obj.alt;
 
