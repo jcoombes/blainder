@@ -3,15 +3,23 @@
 let frame = document.querySelector(".polaroid-frame");
 let dislikebutton = document.getElementById("dislike");
 let likebutton = document.getElementById("like");
+let times_clicked = 0
 
 frame.addEventListener("transitionend", frame.remove);
-dislikebutton.addEventListener("click", () => {pile('left');});
-likebutton.addEventListener("click", () => {pile('right');});
+dislikebutton.addEventListener("click", () => {pile_with_promises('left', times_clicked++);});
+likebutton.addEventListener("click", () => {pile_with_promises('right', times_clicked++);});
 
 
-function pile (choice) {
-  // leftpile: bool - if True, place card on left pile.
-  // else place card on right pile.
+function pile_with_promises (choice, times_clicked) {
+  fetch(`https://jsonplaceholder.typicode.com/photos/${times_clicked + 1}`)
+  .then(response => response.json())
+  .then(obj => pile(choice, obj))
+}
+
+
+function pile (choice, obj) {
+  // choice - string 'left' or 'right'
+  // obj - a fetch object after running response.json()
   let frame = document.querySelector(".polaroid-frame:not(.rotate-left):not(.rotate-right)");
   let newframe = document.createElement("div");
   frame.after(newframe);
@@ -28,24 +36,8 @@ function pile (choice) {
 
   let imgnode = document.createElement("img");
   newframe.appendChild(imgnode);
-  imgnode.src = getnextimagesrc();
-  imgnode.alt = getnextimagealt();
-
-
+  imgnode.src = obj.url
+  imgnode.alt = obj.title
 
   newframe.addEventListener("transitionend", frame.remove);
-}
-
-function getnextimagesrc () {
-  //This will make an ajax call to the server to get the next picture
-  //of blaine from the database.
-  //
-  return "https://cdn.bulbagarden.net/upload/thumb/c/c8/Lets_Go_Pikachu_Eevee_Blaine.png/216px-Lets_Go_Pikachu_Eevee_Blaine.png";
-}
-
-function getnextimagealt () {
-  //same as src, but it finds the alt attribute.
-  //I think I want to have a function query the server
-  //and this function and the function above just parse the result when it returns.
-  return "The Hotheaded Quiz Master!"
-}
+  };

@@ -4,5 +4,5 @@ from . import views
 
 urlpatterns = [
     path('', views.index, name='index'),
-    path('blaimage/', views.blaimage, name='blaimage')
+    path('<int:blaine_image>', views.blaimage, name='blaimage'),
 ]
