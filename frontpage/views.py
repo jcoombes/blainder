@@ -11,6 +11,5 @@ def index(request):
 
 def blaimage(request, blaine_image):
     template = loader.get_template('frontpage/blaimage.json')
-    relevant_length = len(Photo.objects.all())
-    context = {'img': Photo.objects.all().order_by('id')[blaine_image]}
+    context = {'img': Photo.objects.all().order_by('id')[blaine_image-1]}
     return HttpResponse(template.render(context, request))
