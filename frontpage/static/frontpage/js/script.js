@@ -11,7 +11,7 @@ likebutton.addEventListener("click", () => {pile_with_promises('right', times_cl
 
 
 function pile_with_promises (choice, times_clicked) {
-  fetch(`https://blainder.ml/15`)
+  fetch('https://blainder.ml/15')
   .then(response => response.json())
   .then(obj => pile(choice, obj))
 }
