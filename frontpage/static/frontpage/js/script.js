@@ -37,7 +37,7 @@ function pile (choice, obj) {
   let imgnode = document.createElement("img");
   newframe.appendChild(imgnode);
   imgnode.src = obj.url
-  imgnode.alt = obj.title
+  imgnode.alt = obj.alt
 
   newframe.addEventListener("transitionend", frame.remove);
   };
