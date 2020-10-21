@@ -1,6 +1,6 @@
 {
-    "id": {{ img.id }},
-    "user": {{ img.user }},
-    "url": {{ img.picture.url }},
-    "alt": {{ img.alt }},
+    "id": "{{ img.id }}",
+    "user": "{{ img.user }}",
+    "url": "{{ img.picture.url }}",
+    "alt": "{{ img.alt }}",
 }
