@@ -11,5 +11,5 @@ def index(request):
 
 def blaimage(request, blaine_image):
     template = loader.get_template('frontpage/blaimage.json')
-    context = {'img': Photo.objects.all().order_by('user')[blaine_image-1]}
+    context = {'img': Photo.objects.all().order_by('user')[blaine_image]}
     return HttpResponse(template.render(context, request))
