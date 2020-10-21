@@ -6,13 +6,16 @@ let likebutton = document.getElementById("like");
 let times_clicked = 0
 let arr = Array.from(Array(17).keys())
 
-function shuffleArray (arr) {
-    for (let i = arr.length - 1; 1 > 0; i--) {
-    const j = Math.floor(Math.random() * (i+1));
-    [arr[i], arr[j]] = [arr[j], arr[i]];
+function * blaimageChoiceGen (arr) {
+    // this adjusts the array in place, beware of side effects.
+    let choice = Math.floor(Math.random() * arr.length);
+    if (arr.length !== 0) {
+    yield arr.splice(choice, 1);
+    }
+    else {
+    return -1;
     }
 };
-
 
 frame.addEventListener("transitionend", frame.remove);
 dislikebutton.addEventListener("click", () => {pile_with_promises('left', times_clicked++);});
@@ -20,7 +23,7 @@ likebutton.addEventListener("click", () => {pile_with_promises('right', times_cl
 
 
 function pile_with_promises (choice, times_clicked) {
-  fetch(`https://blainder.ml/${arr[times_clicked]}`)
+  fetch(`https://blainder.ml/${ blaimageChoiceGen(arr).next().value[0] }`)
   .then(response => response.json())
   .then(obj => pile(choice, obj))
 }
@@ -50,5 +53,3 @@ function pile (choice, obj) {
 
   newframe.addEventListener("transitionend", frame.remove);
   };
-
-shuffleArray(arr);
