@@ -50,5 +50,3 @@ function pile (choice, obj) {
 
   newframe.addEventListener("transitionend", frame.remove);
   };
-
-shuffleArray(arr);
