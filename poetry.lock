@@ -27,6 +27,17 @@ argon2 = ["argon2-cffi (>=16.1.0)"]
 bcrypt = ["bcrypt"]
 
 [[package]]
+name = "django-directmessages"
+version = "0.9.7"
+description = "Django-Directmessages is a low-level and easy-to-use Django App to manage simple directmessages."
+category = "main"
+optional = false
+python-versions = "*"
+
+[package.dependencies]
+Django = ">=1.5"
+
+[[package]]
 name = "gunicorn"
 version = "20.0.4"
 description = "WSGI HTTP Server for UNIX"
@@ -75,7 +86,7 @@ python-versions = ">=3.5"
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.8"
-content-hash = "53f1ae82caf280a7fc248ee7bdcc96b7b63a130fde1eb8c9dd9ce0829a4bc360"
+content-hash = "bea5b2fd9767c4d3de296cd7c5ca9caf1dd434f95c09f154add3592a8c1543a9"
 
 [metadata.files]
 asgiref = [
@@ -85,6 +96,9 @@ asgiref = [
 django = [
     {file = "Django-3.1.2-py3-none-any.whl", hash = "sha256:c93c28ccf1d094cbd00d860e83128a39e45d2c571d3b54361713aaaf9a94cac4"},
     {file = "Django-3.1.2.tar.gz", hash = "sha256:a2127ad0150ec6966655bedf15dbbff9697cc86d61653db2da1afa506c0b04cc"},
+]
+django-directmessages = [
+    {file = "django-directmessages-0.9.7.tar.gz", hash = "sha256:2fd0ec37f83e57fd9869df1240f3b2e81a50442fe3423c2f59f4b8f5789e689a"},
 ]
 gunicorn = [
     {file = "gunicorn-20.0.4-py2.py3-none-any.whl", hash = "sha256:cd4a810dd51bf497552cf3f863b575dabd73d6ad6a91075b65936b151cbf4f9c"},
