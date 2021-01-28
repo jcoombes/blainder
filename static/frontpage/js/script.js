@@ -4,6 +4,18 @@ let frame = document.querySelector(".polaroid-frame");
 let dislikebutton = document.getElementById("dislike");
 let likebutton = document.getElementById("like");
 let times_clicked = 0
+let arr = Array.from(Array(17).keys())
+
+function * blaimageChoiceGen (arr) {
+    // this adjusts the array in place, beware of side effects.
+    let choice = Math.floor(Math.random() * arr.length);
+    if (arr.length !== 0) {
+    yield arr.splice(choice, 1);
+    }
+    else {
+    return -1;
+    }
+};
 
 frame.addEventListener("transitionend", frame.remove);
 dislikebutton.addEventListener("click", () => {pile_with_promises('left', times_clicked++);});
@@ -11,7 +23,7 @@ likebutton.addEventListener("click", () => {pile_with_promises('right', times_cl
 
 
 function pile_with_promises (choice, times_clicked) {
-  fetch(`https://jsonplaceholder.typicode.com/photos/${times_clicked + 1}`)
+  fetch(`https://blainder.ml/${ blaimageChoiceGen(arr).next().value[0] }`)
   .then(response => response.json())
   .then(obj => pile(choice, obj))
 }
@@ -36,8 +48,8 @@ function pile (choice, obj) {
 
   let imgnode = document.createElement("img");
   newframe.appendChild(imgnode);
-  imgnode.src = obj.url
-  imgnode.alt = obj.title
+  imgnode.src = obj.url;
+  imgnode.alt = obj.alt;
 
   newframe.addEventListener("transitionend", frame.remove);
   };

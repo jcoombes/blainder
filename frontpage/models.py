@@ -81,16 +81,16 @@ class Photo(models.Model):
     user = models.ForeignKey('User', on_delete=models.CASCADE)
 
     def blaine_or_not(user):
-        """
-        Helper function to upload files containing blaine to a different folder than
-        files containing not-blaine.
-        """
+       
+        #Helper function to upload files containing blaine to a different folder than
+        #files containing not-blaine.
+        
         if str(user).endswith("Blaine"):
             return 'blaine/'
         else:
             return ''
 
-    picture = models.ImageField(upload_to=blaine_or_not(user))
+    picture = models.ImageField(upload_to=blaine_or_not(user), default="default.jpg")
     alt = models.CharField(max_length=140, default="")
 
     def __str__(self):

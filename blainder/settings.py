@@ -30,9 +30,28 @@ if os.getenv("DJANGO_DEVELOPMENT", False):
     ALLOWED_HOSTS = ["localhost", "127.0.0.1"]
 else:
     DEBUG = False
+    ADMINS = [('Jam', 'coombes.jd+log@gmail.com')]
     ALLOWED_HOSTS = ["188.166.171.235", "blainder.ml", "www.blainder.ml"]
 
 # Application definition
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'file': {
+            'level': 'DEBUG',
+            'class': 'logging.FileHandler',
+            'filename': os.path.join(BASE_DIR, 'debug.log'),
+        },
+    },
+    'loggers': {
+        'django': {
+            'handlers': ['file'],
+            'level': 'DEBUG',
+            'propagate': True,
+        },
+    },
+}
 
 INSTALLED_APPS = [
     'frontpage.apps.FrontpageConfig',
